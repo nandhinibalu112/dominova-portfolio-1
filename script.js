@@ -265,21 +265,24 @@ window.addEventListener('load', function() {
 
 // Backup — force hide after 4 seconds
 setTimeout(hideLoader, 4000);
-
+// LOADER FIX — guaranteed hide
 function hideLoader() {
-  if (isLoaderHidden) return;
-  isLoaderHidden = true;
-  
   const loader = document.getElementById('loader');
   if (loader) {
     loader.style.opacity = '0';
     loader.style.transition = 'opacity 0.6s ease';
     setTimeout(function() {
       loader.style.display = 'none';
-      animateNumbers();
+      document.body.style.overflow = 'auto';
     }, 600);
-  } else {
-    animateNumbers();
   }
 }
+
+// Hide on page load
+window.addEventListener('load', function() {
+  setTimeout(hideLoader, 2000);
+});
+
+// Force hide after 3 seconds NO MATTER WHAT
+setTimeout(hideLoader, 3000);
 
