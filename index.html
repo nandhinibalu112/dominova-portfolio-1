@@ -517,6 +517,28 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+   <script src="script.js"></script>
+    <script>
+      function hideLoader() {
+        var loader = document.getElementById('loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          loader.style.transition = 'opacity 0.5s ease';
+          setTimeout(function() {
+            loader.style.display = 'none';
+            document.body.style.overflow = 'visible';
+          }, 500);
+        }
+      }
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 1500);
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(hideLoader, 1500);
+        });
+      }
+      setTimeout(hideLoader, 3000);
+    </script>
+</body>
 </body>
 </html>
